@@ -30,7 +30,7 @@ const UserSchema = mongoose.Schema({
         },
 
     },
-    stat:{
+    stats:{
         followers_count: {
             type: Number,
             default: 0

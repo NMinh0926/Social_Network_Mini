@@ -2,6 +2,7 @@ import Follow from '../models/Follow.js';
 import Like from '../models/Like.js';
 import Post from '../models/Post.js';
 import Comment from '../models/Comment.js';
+import User from '../models/User.js';
 
 export const toggleFollow = async (req, res) => {
     const targetId = req.params.id; // Người được follow
@@ -52,9 +53,9 @@ export const toggleLike = async (req, res) => {
             await Like.findByIdAndDelete(existingLike._id);
 
             const Model = target_types === "Post" ? Post : Comment;
-            await Model.findByIdAndUpdate(target_id, { $inc: { "stats.like_count": -1 } });
+            await Model.findByIdAndUpdate(target_id, { $inc: { "stats.likes_count": -1 } });
 
-             return res.status(200).json({ liked: false, message: "Đã bỏ thích" });
+             return res.status(200).json({ liked: false, message: "Has unlike" });
         } else {
             const newLike = new Like({
                 target_id,
@@ -65,15 +66,15 @@ export const toggleLike = async (req, res) => {
 
       
             const Model = target_types === "Post" ? Post : Comment;
-            await Model.findByIdAndUpdate(target_id, { $inc: { "stats.like_count": 1 } });
+            await Model.findByIdAndUpdate(target_id, { $inc: { "stats.likes_count": 1 } });
 
             return res.status(200).json({ liked: true, message: "Đã thích" });
         }
     } catch (err) {
         if (err.code === 11000) {
-            return res.status(400).json("Bạn đã like mục này rồi");
+            return res.status(400).json("You have liked this before");
         }
-        res.status(500).json({ message: "Lỗi hệ thống", error: err });
+        res.status(500).json({ message: "System error", error: err });
     }
 };
 

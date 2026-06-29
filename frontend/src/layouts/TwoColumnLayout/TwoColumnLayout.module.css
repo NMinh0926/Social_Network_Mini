@@ -1,0 +1,22 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
+}
+
+.sidebar {
+    grid-column: 1;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+}
+
+.main {
+    grid-column: 1;
+    top: 0;
+    height: 100vh;
+    background-color: var(--color-surface);
+}

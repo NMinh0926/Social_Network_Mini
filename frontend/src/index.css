@@ -1,0 +1,41 @@
+/* Reset cơ bản */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+:root {
+  /* Color */
+  --color-primary: #4A90E2;
+  --color-bg: #EEF4FB;
+  --color-surface: #FFFFFF;
+  --color-sidebar-active:#E8F0FE;
+  --color-text-primary:#1A1A2E;
+  --color-text-secondary:#7A8BA0;
+  --color-border: #E2EAF4;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Border radius */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-full: 9999px;
+
+  /* Kích thước layout */
+  --sidebar-width:      240px;
+  --right-panel-width:  300px;
+  --topbar-height:      60px;
+}

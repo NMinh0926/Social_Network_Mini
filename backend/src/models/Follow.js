@@ -16,3 +16,5 @@ const FollowSchema = new mongoose.Schema({
 })
 
 const Follow = mongoose.model("Follow", FollowSchema);
+
+export default Follow;

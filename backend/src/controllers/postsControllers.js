@@ -1,4 +1,5 @@
 import Post from '../models/Post.js';
+import User from '../models/User.js'
 
 export const getNewsfeed = async (req, res) => {
     try {
@@ -16,7 +17,7 @@ export const getNewsfeed = async (req, res) => {
         
         // Fetch posts from the users the current user is following, sorted by creation date
         const posts = await Post.find({ author: { $in: followingIds } })
-            .sort({ createdAt: -1 })
+            .sort({ createAt: -1 })
             .skip(skip)
             .limit(limit)
             .populate('author', 'username profile.display_name profile.avatar');
